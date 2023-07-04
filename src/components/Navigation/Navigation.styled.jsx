@@ -10,7 +10,7 @@ export const AppBar = styled(Navbar)`
   & a:hover,
   & a:focus {
     color: white;
-    scale: 1.15;
+    scale: 1.14;
   }
 `;
 
