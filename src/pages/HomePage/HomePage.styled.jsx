@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Welcome = styled.header`
   width: 100%;
-  height: 900px;
+  height: 901px;
 `;
 
 export const Title = styled.h4`
