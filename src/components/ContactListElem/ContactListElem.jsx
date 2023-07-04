@@ -1,29 +1,28 @@
-import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
 import PropTypes from 'prop-types';
-import { ListElem, Text, Button } from './ContactListElem.styled';
+import { ListElem } from './ContactListElem.styled';
+import { ContactMenu } from '../ContactMenu/ContactMenu';
+import { FaUserCircle } from 'react-icons/fa';
+import Card from 'react-bootstrap/Card';
+import { StyledCard } from './ContactListElem.styled';
 
-export const ContactListElem = ({ contactName, contactNumber, contactId }) => {
-  const dispatch = useDispatch();
-
-  const handleDelete = evtId => {
-    dispatch(deleteContact(evtId));
-  };
-
+export const ContactListElem = ({ contact }) => {
   return (
     <ListElem>
-      <Text>
-        {contactName}: {contactNumber}
-      </Text>
-      <Button type="button" onClick={() => handleDelete(contactId)}>
-        Delete
-      </Button>
+      <StyledCard border="dark">
+        <Card.Body>
+          <FaUserCircle />
+          <Card.Title>{contact.name}</Card.Title>
+          <Card.Text>{contact.number}</Card.Text>
+          <ContactMenu contact={contact} />
+        </Card.Body>
+      </StyledCard>
     </ListElem>
   );
 };
 
 ContactListElem.propTypes = {
-  contactName: PropTypes.string.isRequired,
-  contactNumber: PropTypes.string.isRequired,
-  contactId: PropTypes.string.isRequired,
+  contact: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
+  }),
 };

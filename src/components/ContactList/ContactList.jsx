@@ -1,22 +1,16 @@
 import { useSelector } from 'react-redux';
 import { selectFiltredContacts } from 'redux/selectors';
 import { ContactListElem } from '../ContactListElem/ContactListElem';
+import { List } from './ContactList.styled';
 
 export const ContactList = () => {
   const contacts = useSelector(selectFiltredContacts);
 
   const makeList = arrey => {
-    return arrey.map(({ id, name, phone }) => {
-      return (
-        <ContactListElem
-          key={id}
-          contactName={name}
-          contactNumber={phone}
-          contactId={id}
-        />
-      );
+    return arrey.map(contact => {
+      return <ContactListElem key={contact.id} contact={contact} />;
     });
   };
 
-  return <ul>{makeList(contacts)}</ul>;
+  return <List>{makeList(contacts)}</List>;
 };

@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-export const ContactesList = styled.ul`
+export const List = styled.ul`
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+  padding: 20px 0;
 `;

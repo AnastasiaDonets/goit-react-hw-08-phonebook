@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
-import { Label, Input } from './Filter.styled';
+import Form from 'react-bootstrap/Form';
+import { Label, Input, SearchIcon } from './Filter.styled';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -9,9 +10,16 @@ export const Filter = () => {
     dispatch(setFilter(value));
   };
   return (
-    <Label>
-      Find contacts by name
-      <Input type="text" name="filter" onChange={handleFilter} />
-    </Label>
+    <Form>
+      <Label>
+        <SearchIcon />
+        <Input
+          type="text"
+          name="filter"
+          placeholder="Find contacts by name"
+          onChange={handleFilter}
+        />
+      </Label>
+    </Form>
   );
 };
